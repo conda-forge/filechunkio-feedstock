@@ -1,6 +1,6 @@
 {%set name = "filechunkio" %}
 {%set version = "1.8" %}
-{%set compress_type = "tar.gz"}
+{%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
 {%set hash_val = "c8540c2d27e851d3a475b2e14ac109d66c777dd43ab67031891c826e82026745" %}
 {%set build_num = "1" %}
