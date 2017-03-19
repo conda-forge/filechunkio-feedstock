@@ -1,19 +1,21 @@
 {%set name = "filechunkio" %}
 {%set version = "1.8" %}
+{%set compress_type = "tar.gz"}
 {%set hash_type = "sha256" %}
 {%set hash_val = "c8540c2d27e851d3a475b2e14ac109d66c777dd43ab67031891c826e82026745" %}
+{%set build_num = "1" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  fn: {{ name }}-{{ version }}.{{ compress_type }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
-  number: 0
+  number: {{ build_num }}
   script: python setup.py install
 
 requirements:
@@ -28,9 +30,13 @@ test:
     - {{ name }}
 
 about:
-  home: http://bitbucket.org/fabian/filechunkio
+  home: https://bitbucket.org/fabian/filechunkio
+  # license_file: No MANIFEST.in
   license: MIT
-  summary: 'FileChunkIO represents a chunk of an OS-level file containing bytes data'
+  license_family: MIT
+  summary: FileChunkIO represents a chunk of an OS-level file containing bytes data
+  dev_url: https://bitbucket.org/fabian/filechunkio
+  doc_url: https://bitbucket.org/fabian/filechunkio
 
 extra:
   recipe-maintainers:
