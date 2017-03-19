@@ -1,7 +1,7 @@
 About filechunkio
 =================
 
-Home: http://bitbucket.org/fabian/filechunkio
+Home: https://bitbucket.org/fabian/filechunkio
 
 Package license: MIT
 
