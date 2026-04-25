@@ -1,7 +1,6 @@
 {% set name = "filechunkio" %}
 {% set version = "1.8" %}
 {% set compress_type = "tar.gz" %}
-{% set hash_type = "sha256" %}
 {% set hash_val = "c8540c2d27e851d3a475b2e14ac109d66c777dd43ab67031891c826e82026745" %}
 
 package:
@@ -10,23 +9,25 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
-  {{ hash_type }}: {{ hash_val }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
+  sha256: {{ hash_val }}
 
 build:
   noarch: python
-  number: 2
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 3
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
 
   run:
-    - python
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - {{ name }}
 
